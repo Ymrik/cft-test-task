@@ -5,6 +5,8 @@ import com.barievumar.projects.cft.parsers.Parser;
 import com.barievumar.projects.cft.parsers.StringParser;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Enum, содержащий типы данных, с которыми работают алгоритмы сортировки.
@@ -50,6 +52,18 @@ public enum DataType {
      * @return все возможные значения типов данных.
      */
     public static List<String> getValues() {
-        return List.of(INTEGER.value, STRING.value);
+        return Stream.of(DataType.values()).map(DataType::getValue).toList();
+    }
+
+    /**
+     * Метод возвращающий тип данных, соответствующий заданному параметру командной строки.
+     *
+     * @param value параметр командной строки.
+     * @return соответствующий тип данных.
+     */
+    public static DataType getDataTypeByValue(String value) {
+        return Stream.of(DataType.values())
+                .filter(x -> x.getValue().equals(value))
+                .findFirst().orElse(null);
     }
 }

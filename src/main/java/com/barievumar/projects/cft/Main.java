@@ -63,8 +63,7 @@ public class Main {
             // получаем тип данных
             if (!DataType.getValues().contains(args[argsIndex]))
                 throw new IllegalArgumentException("No argument for data type, or wrong syntax! Please specify data type.");
-            if (args[argsIndex].equals(DataType.STRING.getValue())) dataType = DataType.STRING;
-            else dataType = DataType.INTEGER;
+            dataType = DataType.getDataTypeByValue(args[argsIndex]);
             argsIndex++;
             logger.info("Data type: " + dataType);
 
