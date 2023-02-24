@@ -1,0 +1,5 @@
+tree
+giraffe
+money
+string string2
+-23

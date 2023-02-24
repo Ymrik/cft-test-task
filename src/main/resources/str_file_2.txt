@@ -1,0 +1,10 @@
+chair
+glass
+book
+cat
+left
+computer
+leaf
+car
+earth
+snow

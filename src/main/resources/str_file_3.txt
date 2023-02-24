@@ -1,0 +1,10 @@
+hello
+name
+bottle
+glass
+wood
+bottom
+photo
+machine
+sorry
+promise

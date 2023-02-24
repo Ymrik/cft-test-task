@@ -1,0 +1,5 @@
+gamepad
+line
+right
+window
+notepad

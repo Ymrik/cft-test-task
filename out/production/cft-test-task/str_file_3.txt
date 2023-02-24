@@ -1,0 +1,5 @@
+chair
+glass
+book
+cat
+left
