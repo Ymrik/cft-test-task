@@ -69,20 +69,13 @@ public class Main {
 
             // получаем выходной файл
             outputFilePath = Paths.get(args[argsIndex]);
-
-            // получаем первый входной файл
-            inputFilePaths = new ArrayList<>();
-            var firstInputFilePath = Paths.get(args[++argsIndex]);
-            if (!Files.exists(firstInputFilePath)) {
-                throw new IllegalArgumentException("The only one input file with name " + firstInputFilePath + " doesn't exist!");
-            }
-            inputFilePaths.add(firstInputFilePath);
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new IllegalArgumentException("Not enough input elements!\ndataType: " + dataType
                     + "\ndirection: " + direction + "\noutputFile: " + outputFilePath + "\ninputFiles: " + inputFilePaths);
         }
 
-        // получаем остальные входные файлы
+        // получаем входные файлы
+        inputFilePaths = new ArrayList<>();
         while (++argsIndex < args.length) {
             var inputFilePath = Paths.get(args[argsIndex]);
             if (!Files.exists(inputFilePath)) {
@@ -90,6 +83,10 @@ public class Main {
                 continue;
             }
             inputFilePaths.add(inputFilePath);
+        }
+
+        if (inputFilePaths.size()==0) {
+            throw new IllegalArgumentException("Wrong Input! No existing input files!");
         }
     }
 }

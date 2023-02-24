@@ -93,6 +93,22 @@ public class TestFilesMergeSort {
     }
 
     @Test
+    public void testWithFirstInputFileDoesntExist() throws IOException {
+        Main.main(new String[]{"-i", outputFile.toString(), "imaginaryFile.txt",  intFile1.toString()
+                , intFile2.toString(), intFile3.toString()});
+
+        var expected = getIntContentAsc();
+
+        var actual = Files.readAllLines(Path.of("src/test/resources/output_file.txt"))
+                .stream()
+                .map(Integer::parseInt)
+                .toList();
+
+        assertNotNull(actual);
+        assertEquals(actual, expected);
+    }
+
+    @Test
     public void testWithNoDataTypeArg() throws IOException {
         try {
             Main.main(new String[]{"-a", outputFile.toString(), intFile1.toString()
@@ -120,6 +136,17 @@ public class TestFilesMergeSort {
     public void testWithNoInputFiles() {
         try {
             Main.main(new String[]{"-i", outputFile.toString()});
+        } catch (IllegalArgumentException | IOException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        fail();
+    }
+
+    @Test
+    public void testWithFewNotExistingFiles() {
+        try {
+            Main.main(new String[]{"-i", outputFile.toString(), "imgFile1.txt", "imgFile2.txt", "imgFile3.txt"});
         } catch (IllegalArgumentException | IOException e) {
             System.out.println(e.getMessage());
             return;
