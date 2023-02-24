@@ -7,7 +7,7 @@
 - Hamcrest-core 1.3: https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core/1.3
 - JUnit 4.12:  https://mvnrepository.com/artifact/junit/junit/4.12
 
-Запуск приложения
+Запуск приложения.\n
 Для запуска приложения необходимо указать аргументы командной строки:
 1. режим сортировки (-a или -d), необязательный, по умолчанию сортируем по возрастанию;
 2. тип данных (-s или -i), обязательный;
